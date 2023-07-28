@@ -6,3 +6,4 @@ services:
     tty: true
     volumes:
       - ./foo:/foo
+    user: "1000:1000"
