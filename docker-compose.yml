@@ -10,6 +10,8 @@ services:
     build: .
     expose:
       - 8080
+    ports:
+      - "8081:8080"
 
   lb:
       image: envoyproxy/envoy:v1.26-latest
