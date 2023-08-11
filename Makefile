@@ -1,8 +1,10 @@
-shell:
-	docker exec -it duser-alpine-1 /bin/sh
+NAME = $(shell basename $(PWD))
+
+shell: up
+	docker exec -it $(NAME)-alpine-1 /bin/sh
 
 up:
-	docker-compose up -d
+	docker-compose up -d --build
 
 down:
 	docker-compose down -v

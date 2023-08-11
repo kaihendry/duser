@@ -5,3 +5,8 @@ services:
     volumes:
       - ./foo:/foo
     user: "1000:1000"
+
+  simple:
+    build: .
+    ports:
+      - 8080:8080
