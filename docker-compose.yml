@@ -1,11 +1,10 @@
 networks:
   duser-network:
-    #driver: bridge
     enable_ipv6: true
     ipam:
-      # driver: default
       config:
         - subnet: 2001:db8:a::/64
+          gateway: 2001:db8:a::1
 
 services:
   manager:
@@ -19,9 +18,6 @@ services:
       image: envoyproxy/envoy:v1.26-latest
       command: ["-c", "/config/envoy.yaml"]
       volumes:
-        - type: bind
-          source: ./config/envoy
-          target: /config
-          read_only: true
+        - ./config/envoy:/config
       ports:
         - "8080:8080"
