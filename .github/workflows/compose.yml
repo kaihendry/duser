@@ -6,8 +6,10 @@ jobs:
     docker-compose:
         runs-on: ubuntu-latest
         steps:
-        - run: |
-            go install github.com/rakyll/hey@latest
+        - uses: actions/setup-go@v4
+          with:
+            go-version: 'stable'
+        - run: go install github.com/rakyll/hey@latest
         - uses: actions/checkout@v3
         - name: Docker Compose setup
           run: docker compose up --wait --detach --quiet-pull
