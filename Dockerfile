@@ -1,7 +1,7 @@
 FROM golang:1.21 as build
 
 WORKDIR /go/src/app
-COPY . .
+COPY .git go.mod *.go .
 
 RUN CGO_ENABLED=0 go build -o /go/bin/app
 

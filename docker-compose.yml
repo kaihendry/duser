@@ -6,7 +6,20 @@ services:
       - ./foo:/foo
     user: "1000:1000"
 
-  simple:
+  manager:
     build: .
-    ports:
-      - 8080:8080
+    expose:
+      - 8080
+
+  lb:
+      image: envoyproxy/envoy:v1.26-latest
+      command: ["-c", "/config/envoy.yaml"]
+      volumes:
+        - type: bind
+          source: ./config/envoy
+          target: /config
+          read_only: true
+      ports:
+        - "8080:8080"
+
+
