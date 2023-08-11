@@ -1,10 +1,13 @@
+networks:
+  default:
+    name: duser
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: 2001:db8:a::/64
+          gateway: 2001:db8:a::1
+
 services:
-  alpine:
-    image: alpine
-    tty: true
-    volumes:
-      - ./foo:/foo
-    user: "1000:1000"
 
   manager:
     build: .
@@ -23,5 +26,3 @@ services:
           read_only: true
       ports:
         - "8080:8080"
-
-
