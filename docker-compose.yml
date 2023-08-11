@@ -1,14 +1,13 @@
 networks:
-  default:
-    name: duser
+  duser-network:
+    #driver: bridge
     enable_ipv6: true
     ipam:
+      # driver: default
       config:
         - subnet: 2001:db8:a::/64
-          gateway: 2001:db8:a::1
 
 services:
-
   manager:
     build: .
     expose:
