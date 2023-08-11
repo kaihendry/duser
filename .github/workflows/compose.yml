@@ -1,0 +1,17 @@
+name: Bring up service to check if it can run
+
+on: push
+
+jobs:
+    docker-compose:
+        runs-on: ubuntu-latest
+        steps:
+        - run: sudo snap install --edge httpie
+        - uses: actions/checkout@v3
+        - name: Docker Compose setup
+          run: docker compose up --wait --detach --quiet-pull
+        - name: Dump docker container logs on failure
+          if: failure()
+          run: docker compose logs
+        - name: Smoke test
+          run: http --check-status --ignore-stdin http://localhost:8080
