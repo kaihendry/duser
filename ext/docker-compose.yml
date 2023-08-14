@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  alpine-curl:
+    image: alpine/curl
+    command: ["-fsSL", "http://manager:8080"]
+    networks:
+      - duser_default
+
+networks:
+  duser_default:
+    external: true
