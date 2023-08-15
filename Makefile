@@ -10,4 +10,4 @@ down:
 	docker compose down -v --remove-orphans
 
 test:
-	docker run --network duser_default  --rm alpine/curl -fsSL http://manager:8080
+	docker run --network maeve-tues --rm alpine/curl -fsSL http://manager:8080

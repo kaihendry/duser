@@ -1,5 +1,6 @@
 networks:
-  duser-network:
+  default:
+    name: maeve-tues
     enable_ipv6: true
     ipam:
       config:
