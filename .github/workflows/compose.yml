@@ -17,6 +17,7 @@ jobs:
         - name: Dump docker container logs on failure
           if: failure()
           run: docker compose logs
+        - run: curl -f http://localhost:8080
         - name: Load test envoy
           run: hey http://localhost:8080
         - name: Load test upstream
