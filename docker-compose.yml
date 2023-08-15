@@ -1,6 +1,6 @@
 networks:
-  default:
-    name: maeve-tues
+  maeve:
+    driver: bridge
     enable_ipv6: true
     ipam:
       config:
@@ -12,6 +12,8 @@ services:
     build: .
     expose:
       - 8080
+    networks:
+      - maeve
 
   lb:
       image: envoyproxy/envoy:v1.26-latest
@@ -20,3 +22,7 @@ services:
         - ./config/envoy:/config
       ports:
         - "8080:8080"
+      depends_on:
+        - manager
+      networks:
+        - maeve
