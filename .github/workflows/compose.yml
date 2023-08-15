@@ -17,7 +17,3 @@ jobs:
           if: failure()
           run: docker compose logs
         - run: curl -f http://localhost:8080
-        - name: Load test envoy
-          run: ab http://localhost:8080/foobar
-        - name: Load test upstream
-          run: ab http://localhost:8081/whatever

@@ -1,5 +1,6 @@
 networks:
-  maeve:
+  maeve-csms:
+    name: maeve-csms
     driver: bridge
     enable_ipv6: true
     ipam:
@@ -13,7 +14,7 @@ services:
     expose:
       - 8080
     networks:
-      - maeve
+      - maeve-csms
 
   lb:
       image: envoyproxy/envoy:v1.26-latest
@@ -25,4 +26,4 @@ services:
       depends_on:
         - manager
       networks:
-        - maeve
+        - maeve-csms
